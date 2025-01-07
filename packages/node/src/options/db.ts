@@ -7,7 +7,7 @@ export interface IDBOptions {
 }
 
 export const defaultDBOptions = {
-  dbDir: `${homedir()}/.skandha/db/`,
+  dbDir: `${homedir()}/.safehodl/db/`,
   dbFile: "mempool-db",
   namespace: "userops",
 };

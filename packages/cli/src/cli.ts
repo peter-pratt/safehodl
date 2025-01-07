@@ -6,7 +6,7 @@ import { registerCommandToYargs } from "./util";
 import { getVersionData } from "./util/version";
 
 const { version } = getVersionData();
-const topBanner = `skandha: TypeScript Implementation of the ERC 4337 bundler client.
+const topBanner = `safehodl: TypeScript Implementation of the ERC 4337 bundler client.
   * Version: ${version}
   * by Etherspot, 2023`;
 const bottomBanner = `📖 For more information, check the CLI reference:
@@ -22,8 +22,8 @@ export const yarg = yargs(
  * Common factory for running the CLI and running integration tests
  * The CLI must actually be executed in a different script
  */
-export function getSkandhaCli(): yargs.Argv {
-  const skandha = yarg
+export function getSafehodlCli(): yargs.Argv {
+  const safehodl = yarg
     .parserConfiguration({
       // As of yargs v16.1.0 dot-notation breaks strictOptions()
       // Manually processing options is typesafe tho more verbose
@@ -44,11 +44,11 @@ export function getSkandhaCli(): yargs.Argv {
 
   // yargs.command and all ./cmds
   for (const cmd of cmds) {
-    registerCommandToYargs(skandha, cmd);
+    registerCommandToYargs(safehodl, cmd);
   }
 
   // throw an error if we see an unrecognized cmd
-  skandha.recommendCommands().strict();
+  safehodl.recommendCommands().strict();
 
-  return skandha;
+  return safehodl;
 }

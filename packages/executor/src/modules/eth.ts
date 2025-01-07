@@ -33,7 +33,7 @@ import {
   EstimateUserOperationGasArgs,
   SendUserOperationGasArgs,
 } from "./interfaces";
-import { Skandha } from "./skandha";
+import { Safehodl } from "./safehodl";
 
 export class Eth {
   private pvgEstimator: IPVGEstimator | null = null;
@@ -44,7 +44,7 @@ export class Eth {
     private provider: ethers.providers.JsonRpcProvider,
     private userOpValidationService: UserOpValidationService,
     private mempoolService: MempoolService,
-    private skandhaModule: Skandha,
+    private safehodlModule: Safehodl,
     private config: NetworkConfig,
     private logger: Logger,
     private metrics: PerChainMetrics | null,
@@ -228,7 +228,7 @@ export class Eth {
 
     userOp.callGasLimit = callGasLimit;
     let preVerificationGas: BigNumberish = this.calcPreVerificationGas(userOp);
-    const gasFee = await this.skandhaModule.getGasPrice();
+    const gasFee = await this.safehodlModule.getGasPrice();
 
     if (this.pvgEstimator) {
       userOp.maxFeePerGas = gasFee.maxFeePerGas;

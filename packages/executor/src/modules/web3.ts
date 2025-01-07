@@ -1,10 +1,10 @@
-import { SkandhaVersion } from "@skandha/types/lib/executor";
+import { SafehodlVersion } from "@skandha/types/lib/executor";
 import { Config } from "../config";
 
 export class Web3 {
-  constructor(private config: Config, private version: SkandhaVersion) {}
+  constructor(private config: Config, private version: SafehodlVersion) {}
 
   clientVersion(): string {
-    return `skandha/${this.version.version}-${this.version.commit}`;
+    return `safehodl/${this.version.version}-${this.version.commit}`;
   }
 }

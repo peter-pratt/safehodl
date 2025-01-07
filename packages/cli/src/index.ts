@@ -2,9 +2,9 @@
 
 // MUST import first to apply preset from args
 import { YargsError } from "./util";
-import { getSkandhaCli, yarg } from "./cli";
+import { getSafehodlCli, yarg } from "./cli";
 
-const bundler = getSkandhaCli();
+const bundler = getSafehodlCli();
 
 void bundler
   .fail((msg, err) => {

@@ -1,11 +1,11 @@
 export const CustomRPCMethods = {
-  skandha_getGasPrice: "skandha_getGasPrice",
-  skandha_config: "skandha_config",
-  skandha_feeHistory: "skandha_feeHistory",
-  skandha_peers: "skandha_peers",
-  skandha_userOperationStatus: "skandha_userOperationStatus",
-  skandha_subscribe: "skandha_subscribe",
-  skandha_unsubscribe: "skandha_unsubscribe",
+  safehodl_getGasPrice: "safehodl_getGasPrice",
+  safehodl_config: "safehodl_config",
+  safehodl_feeHistory: "safehodl_feeHistory",
+  safehodl_peers: "safehodl_peers",
+  safehodl_userOperationStatus: "safehodl_userOperationStatus",
+  safehodl_subscribe: "safehodl_subscribe",
+  safehodl_unsubscribe: "safehodl_unsubscribe",
 };
 
 export const BundlerRPCMethods = {

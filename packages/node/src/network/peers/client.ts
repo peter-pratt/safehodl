@@ -1,5 +1,5 @@
 export enum ClientKind {
-  Skandha = "Skandha",
+  Safehodl = "Safehodl",
   Stackup = "Stackup",
   Infinitism = "Infitinism",
   Voltaire = "Voltaire",
@@ -11,7 +11,7 @@ export function clientFromAgentVersion(agentVersion: string): ClientKind {
   const agent =
     slashIndex >= 0 ? agentVersion.slice(0, slashIndex) : agentVersion;
   const agentLC = agent.toLowerCase();
-  if (agentLC === "skandha" || agentLC === "js-libp2p")
-    return ClientKind.Skandha;
+  if (agentLC === "safehodl" || agentLC === "js-libp2p")
+    return ClientKind.Safehodl;
   return ClientKind.Unknown;
 }

@@ -140,7 +140,7 @@ export class SubscriptionService {
     for (const id of this.events[event]) {
       const response: object = {
         jsonrpc: "2.0",
-        method: "skandha_subscription",
+        method: "safehodl_subscription",
         params: {
           subscription: id,
           result: data,

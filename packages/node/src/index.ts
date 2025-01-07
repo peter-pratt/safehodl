@@ -11,7 +11,7 @@ import { BundlingMode } from "@skandha/types/lib/api/interfaces";
 import { createMetrics, getHttpMetricsServer } from "@skandha/monitoring/lib";
 import { MetricsOptions } from "@skandha/types/lib/options/metrics";
 import { GetNodeAPI } from "@skandha/executor/lib/interfaces";
-import { SkandhaVersion } from "@skandha/types/lib/executor";
+import { SafehodlVersion } from "@skandha/types/lib/executor";
 import { Network } from "./network/network";
 import { SyncService } from "./sync";
 import { IBundlerNodeOptions } from "./options";
@@ -44,7 +44,7 @@ export interface BundlerNodeInitOptions {
   redirectRpc: boolean;
   bundlingMode: BundlingMode;
   metricsOptions: MetricsOptions;
-  version: SkandhaVersion;
+  version: SafehodlVersion;
 }
 
 export class BundlerNode {

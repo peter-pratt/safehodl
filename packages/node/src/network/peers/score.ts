@@ -96,7 +96,7 @@ export type PeerRpcScoreStoreModules = {};
 export type PeerScoreStats = ({ peerId: PeerIdStr } & PeerScoreStat)[];
 
 export type PeerScoreStat = {
-  skandhaScore: number;
+  safehodlScore: number;
   gossipScore: number;
   ignoreNegativeGossipScore: boolean;
   score: number;
@@ -165,7 +165,7 @@ export class PeerRpcScoreStore implements IPeerRpcScoreStore {
  * Manage score of a peer.
  */
 export class PeerScore {
-  private skandhaScore: number;
+  private safehodlScore: number;
   private gossipScore: number;
   private ignoreNegativeGossipScore: boolean;
   /** The final score, computed from the above */
@@ -173,7 +173,7 @@ export class PeerScore {
   private lastUpdate: number;
 
   constructor() {
-    this.skandhaScore = DEFAULT_SCORE;
+    this.safehodlScore = DEFAULT_SCORE;
     this.gossipScore = DEFAULT_SCORE;
     this.score = DEFAULT_SCORE;
     this.ignoreNegativeGossipScore = false;
@@ -189,11 +189,11 @@ export class PeerScore {
   }
 
   add(scoreDelta: number): void {
-    let newScore = this.skandhaScore + scoreDelta;
+    let newScore = this.safehodlScore + scoreDelta;
     if (newScore > MAX_SCORE) newScore = MAX_SCORE;
     if (newScore < MIN_SCORE) newScore = MIN_SCORE;
 
-    this.setSkandhaScore(newScore);
+    this.setsafehodlScore(newScore);
   }
 
   /**
@@ -213,10 +213,10 @@ export class PeerScore {
       this.lastUpdate = nowMs;
       // e^(-ln(2)/HL*t)
       const decayFactor = Math.exp(HALFLIFE_DECAY_MS * sinceLastUpdateMs);
-      this.setSkandhaScore(this.skandhaScore * decayFactor);
+      this.setsafehodlScore(this.safehodlScore * decayFactor);
     }
 
-    return this.skandhaScore;
+    return this.safehodlScore;
   }
 
   updateGossipsubScore(newScore: number, ignore: boolean): void {
@@ -230,7 +230,7 @@ export class PeerScore {
 
   getStat(): PeerScoreStat {
     return {
-      skandhaScore: this.skandhaScore,
+      safehodlScore: this.safehodlScore,
       gossipScore: this.gossipScore,
       ignoreNegativeGossipScore: this.ignoreNegativeGossipScore,
       score: this.score,
@@ -238,8 +238,8 @@ export class PeerScore {
     };
   }
 
-  private setSkandhaScore(newScore: number): void {
-    this.skandhaScore = newScore;
+  private setsafehodlScore(newScore: number): void {
+    this.safehodlScore = newScore;
     this.updateState();
   }
 
@@ -261,7 +261,7 @@ export class PeerScore {
    * Compute the final score
    */
   private recomputeScore(): void {
-    this.score = this.skandhaScore;
+    this.score = this.safehodlScore;
     if (this.score <= MIN_SCORE_BEFORE_BAN) {
       // ignore all other scores, i.e. do nothing here
       return;

@@ -23,8 +23,8 @@ export async function getHttpMetricsServer(
   const httpServerRegistry = new Registry();
 
   const scrapeTimeMetric = new Histogram<"status">({
-    name: "Skandha_metrics_scrape_seconds",
-    help: "Skandha metrics server async time to scrape metrics",
+    name: "Safehodl_metrics_scrape_seconds",
+    help: "Safehodl metrics server async time to scrape metrics",
     labelNames: ["status"],
     buckets: [0.1, 1, 10],
   });

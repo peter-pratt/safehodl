@@ -1,5 +1,8 @@
 {
   "name": "@skandha/cli",
+  "bin": {
+    "safehodl": "./bin/safehodl.js"
+  },
   "private": false,
   "publishConfig": {
     "access": "public"

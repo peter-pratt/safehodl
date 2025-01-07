@@ -3,8 +3,8 @@ import { BigNumber, providers } from "ethers";
 import { IDbController, Logger } from "@skandha/types/lib";
 import { chainsWithoutEIP1559 } from "@skandha/params/lib";
 import { PerChainMetrics } from "@skandha/monitoring/lib";
-import { SkandhaVersion } from "@skandha/types/lib/executor";
-import { Web3, Debug, Eth, Skandha } from "./modules";
+import { SafehodlVersion } from "@skandha/types/lib/executor";
+import { Web3, Debug, Eth, Safehodl } from "./modules";
 import {
   MempoolService,
   UserOpValidationService,
@@ -19,7 +19,7 @@ import { Config } from "./config";
 import { BundlingMode, GetNodeAPI, NetworkConfig } from "./interfaces";
 
 export interface ExecutorOptions {
-  version: SkandhaVersion;
+  version: SafehodlVersion;
   chainId: number;
   db: IDbController;
   config: Config;
@@ -34,7 +34,7 @@ export class Executor {
   private logger: Logger;
   private metrics: PerChainMetrics | null;
 
-  public version: SkandhaVersion;
+  public version: SafehodlVersion;
   public chainId: number;
   public config: Config;
   public provider: providers.JsonRpcProvider;
@@ -42,7 +42,7 @@ export class Executor {
   public web3: Web3;
   public debug: Debug;
   public eth: Eth;
-  public skandha: Skandha;
+  public safehodl: Safehodl;
 
   public bundlingService: BundlingService;
   public mempoolService: MempoolService;
@@ -98,7 +98,7 @@ export class Executor {
       this.logger
     );
 
-    this.skandha = new Skandha(
+    this.safehodl = new Safehodl(
       this.getNodeApi,
       this.mempoolService,
       this.chainId,
@@ -108,7 +108,7 @@ export class Executor {
     );
 
     this.userOpValidationService = new UserOpValidationService(
-      this.skandha,
+      this.safehodl,
       this.provider,
       this.reputationService,
       this.chainId,
@@ -153,7 +153,7 @@ export class Executor {
       this.provider,
       this.userOpValidationService,
       this.mempoolService,
-      this.skandha,
+      this.safehodl,
       this.networkConfig,
       this.logger,
       this.metrics,

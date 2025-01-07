@@ -17,7 +17,7 @@ import {
   RedirectAPI,
   SubscriptionApi,
 } from "./modules";
-import { SkandhaAPI } from "./modules/skandha";
+import { SafehodlAPI } from "./modules/safehodl";
 import { JsonRpcRequest, JsonRpcResponse } from "./interface";
 import { Server } from "./server";
 
@@ -38,7 +38,7 @@ export interface RelayerAPI {
   ethApi: EthAPI;
   debugApi: DebugAPI;
   web3Api: Web3API;
-  skandhaApi: SkandhaAPI;
+  safehodlApi: SafehodlAPI;
 }
 
 export class ApiApp {
@@ -53,7 +53,7 @@ export class ApiApp {
   private debugApi: DebugAPI;
   private web3Api: Web3API;
   private redirectApi: RedirectAPI;
-  private skandhaApi: SkandhaAPI;
+  private safehodlApi: SafehodlAPI;
   private subscriptionApi: SubscriptionApi;
 
   constructor(options: EtherspotBundlerOptions) {
@@ -70,7 +70,7 @@ export class ApiApp {
     this.debugApi = new DebugAPI(this.executor.debug);
     this.web3Api = new Web3API(this.executor.web3);
     this.redirectApi = new RedirectAPI(this.config);
-    this.skandhaApi = new SkandhaAPI(this.executor.eth, this.executor.skandha);
+    this.safehodlApi = new SafehodlAPI(this.executor.eth, this.executor.safehodl);
 
     // HTTP interface
     this.server.http.post("/rpc/", async (req, res): Promise<void> => {
@@ -158,12 +158,12 @@ export class ApiApp {
     const { method, params, jsonrpc, id } = request;
     try {
       switch (method) {
-        case CustomRPCMethods.skandha_subscribe: {
+        case CustomRPCMethods.safehodl_subscribe: {
           const eventId = this.subscriptionApi.subscribe(socket, params[0]);
           response = { jsonrpc, id, result: eventId };
           break;
         }
-        case CustomRPCMethods.skandha_unsubscribe: {
+        case CustomRPCMethods.safehodl_unsubscribe: {
           this.subscriptionApi.unsubscribe(socket, params[0]);
           response = { jsonrpc, id, result: "ok" };
           break;
@@ -298,25 +298,25 @@ export class ApiApp {
         case BundlerRPCMethods.web3_clientVersion:
           result = this.web3Api.clientVersion();
           break;
-        case CustomRPCMethods.skandha_getGasPrice:
-          result = await this.skandhaApi.getGasPrice();
+        case CustomRPCMethods.safehodl_getGasPrice:
+          result = await this.safehodlApi.getGasPrice();
           break;
-        case CustomRPCMethods.skandha_feeHistory:
-          result = await this.skandhaApi.getFeeHistory({
+        case CustomRPCMethods.safehodl_feeHistory:
+          result = await this.safehodlApi.getFeeHistory({
             entryPoint: params[0],
             blockCount: params[1],
             newestBlock: params[2],
           });
           break;
-        case CustomRPCMethods.skandha_config:
-          result = await this.skandhaApi.getConfig();
+        case CustomRPCMethods.safehodl_config:
+          result = await this.safehodlApi.getConfig();
           // skip hexlify for this particular rpc
           return { jsonrpc, id, result };
-        case CustomRPCMethods.skandha_peers:
-          result = await this.skandhaApi.getPeers();
+        case CustomRPCMethods.safehodl_peers:
+          result = await this.safehodlApi.getPeers();
           break;
-        case CustomRPCMethods.skandha_userOperationStatus:
-          result = await this.skandhaApi.getUserOperationStatus(params[0]);
+        case CustomRPCMethods.safehodl_userOperationStatus:
+          result = await this.safehodlApi.getUserOperationStatus(params[0]);
           break;
         default:
           throw new RpcError(

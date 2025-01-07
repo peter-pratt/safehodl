@@ -29,7 +29,7 @@ import {
   parseValidationResult,
 } from "../utils";
 import { ReputationService } from "../../ReputationService";
-import { Skandha } from "../../../modules";
+import { Safehodl } from "../../../modules";
 import { Config } from "../../../config";
 import { getUserOpGasLimit } from "../../BundlingService/utils";
 
@@ -64,7 +64,7 @@ export class SafeValidationService {
   private gethTracer: GethTracer;
 
   constructor(
-    private skandhaUtils: Skandha,
+    private safehodlUtils: Safehodl,
     private provider: providers.Provider,
     private reputationService: ReputationService,
     private chainId: number,
@@ -84,7 +84,7 @@ export class SafeValidationService {
   ): Promise<UserOpValidationResult> {
     let gasPrice: GetGasPriceResponse | null = null;
     if (this.networkConfig.gasFeeInSimulation) {
-      gasPrice = await this.skandhaUtils.getGasPrice();
+      gasPrice = await this.safehodlUtils.getGasPrice();
       gasPrice.maxFeePerGas = ethers.utils.hexValue(
         BigNumber.from(gasPrice.maxFeePerGas)
       );

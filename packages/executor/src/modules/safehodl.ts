@@ -18,7 +18,7 @@ import { Config } from "../config";
 import { MempoolService } from "../services";
 
 // custom features of Skandha
-export class Skandha {
+export class Safehodl {
   networkConfig: NetworkConfig;
 
   constructor(

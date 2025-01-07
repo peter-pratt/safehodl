@@ -5,14 +5,14 @@ import {
   GetGasPriceResponse,
   UserOperationStatus,
 } from "@skandha/types/lib/api/interfaces";
-import { Skandha } from "@skandha/executor/lib/modules";
+import { Safehodl } from "@skandha/executor/lib/modules";
 import RpcError from "@skandha/types/lib/api/errors/rpc-error";
 import * as RpcErrorCodes from "@skandha/types/lib/api/errors/rpc-error-codes";
 import { RpcMethodValidator } from "../utils/RpcMethodValidator";
 import { FeeHistoryArgs } from "../dto/FeeHistory.dto";
 
-export class SkandhaAPI {
-  constructor(private ethModule: Eth, private skandhaModule: Skandha) {}
+export class SafehodlAPI {
+  constructor(private ethModule: Eth, private safehodlModule: Safehodl) {}
 
   /**
    * @param entryPoint Entry Point
@@ -25,7 +25,7 @@ export class SkandhaAPI {
     if (!this.ethModule.validateEntryPoint(args.entryPoint)) {
       throw new RpcError("Invalid Entrypoint", RpcErrorCodes.INVALID_REQUEST);
     }
-    return await this.skandhaModule.getFeeHistory(
+    return await this.safehodlModule.getFeeHistory(
       args.entryPoint,
       args.blockCount,
       args.newestBlock
@@ -37,19 +37,19 @@ export class SkandhaAPI {
    * @returns status
    */
   async getUserOperationStatus(hash: string): Promise<UserOperationStatus> {
-    return this.skandhaModule.getUserOperationStatus(hash);
+    return this.safehodlModule.getUserOperationStatus(hash);
   }
 
   async getGasPrice(): Promise<GetGasPriceResponse> {
-    return await this.skandhaModule.getGasPrice();
+    return await this.safehodlModule.getGasPrice();
   }
 
   async getConfig(): Promise<GetConfigResponse> {
-    return await this.skandhaModule.getConfig();
+    return await this.safehodlModule.getConfig();
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   async getPeers() {
-    return await this.skandhaModule.getPeers();
+    return await this.safehodlModule.getPeers();
   }
 }

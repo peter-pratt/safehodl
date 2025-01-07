@@ -29,14 +29,14 @@ export const defaultNetworksFile = "config.json";
 
 const globalSingleOptions: ICliCommandOptions<IGlobalSingleArgs> = {
   configFile: {
-    description: "Location of the configuration file used by Skandha",
+    description: "Location of the configuration file used by Safehodl",
     type: "string",
     default: `${__dirname}/config.json`,
   },
   dataDir: {
-    description: "Location of the data directory used by Skandha",
+    description: "Location of the data directory used by Safehodl",
     type: "string",
-    default: `${homedir()}/.skandha/db/`,
+    default: `${homedir()}/.safehodl/db/`,
   },
   testingMode: {
     description: "Run bundler in testing mode (For testing against test suite)",

@@ -21,7 +21,7 @@ export type Libp2pOptions = {
   bootMultiaddrs?: string[];
   maxConnections?: number;
   minConnections?: number;
-  skandhaVersion?: string;
+  safehodlVersion?: string;
   mdns?: boolean;
 };
 
@@ -72,9 +72,9 @@ export async function createNodejsLibp2p(
     datastore: options.datastore,
     identify: {
       host: {
-        agentVersion: options.skandhaVersion
-          ? `skandha/${options.skandhaVersion}`
-          : "skandha",
+        agentVersion: options.safehodlVersion
+          ? `safehodl/${options.safehodlVersion}`
+          : "safehodl",
       },
     },
   })) as Libp2p;

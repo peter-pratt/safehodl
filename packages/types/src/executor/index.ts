@@ -1,4 +1,4 @@
-export type SkandhaVersion = {
+export type SafehodlVersion = {
   /** "0.28.2" */
   version: string;
   commit: string;
