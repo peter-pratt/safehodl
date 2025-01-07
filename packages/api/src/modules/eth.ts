@@ -1,9 +1,9 @@
-import { Eth } from "@skandha/executor/lib/modules/eth";
+import { Eth } from "@safehodl/executor/lib/modules/eth";
 import {
   EstimatedUserOperationGas,
   UserOperationByHashResponse,
   UserOperationReceipt,
-} from "@skandha/types/lib/api/interfaces";
+} from "@safehodl/types/lib/api/interfaces";
 import { RpcMethodValidator } from "../utils/RpcMethodValidator";
 import { SendUserOperationGasArgs } from "../dto/SendUserOperation.dto";
 import { EstimateUserOperationGasArgs } from "../dto/EstimateUserOperation.dto";

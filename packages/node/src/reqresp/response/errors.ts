@@ -1,4 +1,4 @@
-import { SkandhaError } from "@skandha/utils/lib";
+import { SkandhaError } from "@safehodl/utils/lib";
 import { RespStatus, RpcResponseStatusError } from "../interface";
 
 type RpcResponseStatusNotSuccess = Exclude<RespStatus, RespStatus.SUCCESS>;

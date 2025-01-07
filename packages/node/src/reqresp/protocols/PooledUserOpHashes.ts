@@ -1,4 +1,4 @@
-import { ssz, ts } from "@skandha/types/lib";
+import { ssz, ts } from "@safehodl/types/lib";
 import {
   ContextBytesType,
   DuplexProtocolDefinitionGenerator,

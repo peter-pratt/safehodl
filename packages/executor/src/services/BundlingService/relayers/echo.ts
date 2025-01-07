@@ -1,7 +1,7 @@
 import { providers } from "ethers";
-import { PerChainMetrics } from "@skandha/monitoring/lib";
-import { Logger } from "@skandha/types/lib";
-import { IEntryPoint__factory } from "@skandha/types/lib/executor/contracts";
+import { PerChainMetrics } from "@safehodl/monitoring/lib";
+import { Logger } from "@safehodl/types/lib";
+import { IEntryPoint__factory } from "@safehodl/types/lib/executor/contracts";
 import { Config } from "../../../config";
 import { Bundle, NetworkConfig } from "../../../interfaces";
 import { MempoolService } from "../../MempoolService";

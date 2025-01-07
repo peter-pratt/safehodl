@@ -1,8 +1,8 @@
 import { Mutex } from "async-mutex";
 import { BigNumber, utils } from "ethers";
-import { IDbController } from "@skandha/types/lib";
-import * as RpcErrorCodes from "@skandha/types/lib/api/errors/rpc-error-codes";
-import { ReputationStatus } from "@skandha/types/lib/executor";
+import { IDbController } from "@safehodl/types/lib";
+import * as RpcErrorCodes from "@safehodl/types/lib/api/errors/rpc-error-codes";
+import { ReputationStatus } from "@safehodl/types/lib/executor";
 import { ReputationEntry } from "../entities/ReputationEntry";
 import {
   ReputationEntryDump,

@@ -1,23 +1,23 @@
 import { BigNumber, BigNumberish, ethers } from "ethers";
-import { Logger } from "@skandha/types/lib";
+import { Logger } from "@safehodl/types/lib";
 import {
   GetConfigResponse,
   GetFeeHistoryResponse,
   GetGasPriceResponse,
   UserOperationStatus,
-} from "@skandha/types/lib/api/interfaces";
-import RpcError from "@skandha/types/lib/api/errors/rpc-error";
-import * as RpcErrorCodes from "@skandha/types/lib/api/errors/rpc-error-codes";
-import { GasPriceMarkupOne } from "@skandha/params/lib";
-import { getGasFee } from "@skandha/params/lib";
-import { IEntryPoint__factory } from "@skandha/types/lib/executor/contracts";
-import { UserOperationStruct } from "@skandha/types/lib/executor/contracts/EntryPoint";
-import { MempoolEntryStatus } from "@skandha/types/lib/executor";
+} from "@safehodl/types/lib/api/interfaces";
+import RpcError from "@safehodl/types/lib/api/errors/rpc-error";
+import * as RpcErrorCodes from "@safehodl/types/lib/api/errors/rpc-error-codes";
+import { GasPriceMarkupOne } from "@safehodl/params/lib";
+import { getGasFee } from "@safehodl/params/lib";
+import { IEntryPoint__factory } from "@safehodl/types/lib/executor/contracts";
+import { UserOperationStruct } from "@safehodl/types/lib/executor/contracts/EntryPoint";
+import { MempoolEntryStatus } from "@safehodl/types/lib/executor";
 import { GetNodeAPI, NetworkConfig } from "../interfaces";
 import { Config } from "../config";
 import { MempoolService } from "../services";
 
-// custom features of Skandha
+// custom features of safehodl
 export class Safehodl {
   networkConfig: NetworkConfig;
 

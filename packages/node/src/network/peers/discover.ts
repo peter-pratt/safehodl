@@ -2,9 +2,9 @@ import { PeerId } from "@libp2p/interface-peer-id";
 import { Multiaddr } from "@multiformats/multiaddr";
 import { PeerInfo } from "@libp2p/interface-peer-info";
 import { ENR, IDiscv5DiscoveryInputOptions } from "@chainsafe/discv5";
-import Logger from "@skandha/api/lib/logger";
-import { pruneSetToMax, sleep } from "@skandha/utils/lib";
-import { ssz } from "@skandha/types/lib";
+import Logger from "@safehodl/api/lib/logger";
+import { pruneSetToMax, sleep } from "@safehodl/utils/lib";
+import { ssz } from "@safehodl/types/lib";
 import { Libp2p } from "../interface";
 import { ENRKey } from "../metadata";
 import {

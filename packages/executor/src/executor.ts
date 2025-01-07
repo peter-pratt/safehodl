@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import { BigNumber, providers } from "ethers";
-import { IDbController, Logger } from "@skandha/types/lib";
-import { chainsWithoutEIP1559 } from "@skandha/params/lib";
-import { PerChainMetrics } from "@skandha/monitoring/lib";
-import { SafehodlVersion } from "@skandha/types/lib/executor";
+import { IDbController, Logger } from "@safehodl/types/lib";
+import { chainsWithoutEIP1559 } from "@safehodl/params/lib";
+import { PerChainMetrics } from "@safehodl/monitoring/lib";
+import { SafehodlVersion } from "@safehodl/types/lib/executor";
 import { Web3, Debug, Eth, Safehodl } from "./modules";
 import {
   MempoolService,

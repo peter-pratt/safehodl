@@ -1,5 +1,5 @@
 {
-  "name": "@skandha/db",
+  "name": "@safehodl/db",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -34,7 +34,7 @@
   "dependencies": {
     "@chainsafe/ssz": "0.10.1",
     "@farcaster/rocksdb": "5.5.0",
-    "@skandha/types": "^1.5.27"
+    "@safehodl/types": "^1.5.27"
   },
   "devDependencies": {
     "@types/rocksdb": "3.0.1",

@@ -1,5 +1,5 @@
 {
-  "name": "@skandha/types",
+  "name": "@safehodl/types",
   "private": false,
   "publishConfig": {
     "access": "public"

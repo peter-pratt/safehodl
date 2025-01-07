@@ -1,9 +1,9 @@
 import { BigNumber, BigNumberish, ethers } from "ethers";
 import { getAddress, hexValue } from "ethers/lib/utils";
-import * as RpcErrorCodes from "@skandha/types/lib/api/errors/rpc-error-codes";
-import RpcError from "@skandha/types/lib/api/errors/rpc-error";
-import { UserOperationStruct } from "@skandha/types/lib/executor/contracts/EntryPoint";
-import { MempoolEntryStatus } from "@skandha/types/lib/executor";
+import * as RpcErrorCodes from "@safehodl/types/lib/api/errors/rpc-error-codes";
+import RpcError from "@safehodl/types/lib/api/errors/rpc-error";
+import { UserOperationStruct } from "@safehodl/types/lib/executor/contracts/EntryPoint";
+import { MempoolEntryStatus } from "@safehodl/types/lib/executor";
 import { now } from "../utils";
 import { IMempoolEntry, MempoolEntrySerialized } from "./interfaces";
 

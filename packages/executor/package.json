@@ -1,5 +1,5 @@
 {
-  "name": "@skandha/executor",
+  "name": "@safehodl/executor",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -35,10 +35,10 @@
   },
   "dependencies": {
     "@flashbots/ethers-provider-bundle": "0.6.2",
-    "@skandha/monitoring": "^1.5.27",
-    "@skandha/params": "^1.5.27",
-    "@skandha/types": "^1.5.27",
-    "@skandha/utils": "^1.5.27",
+    "@safehodl/monitoring": "^1.5.27",
+    "@safehodl/params": "^1.5.27",
+    "@safehodl/types": "^1.5.27",
+    "@safehodl/utils": "^1.5.27",
     "async-mutex": "0.4.0",
     "ethers": "5.7.2",
     "strict-event-emitter-types": "2.0.0",

@@ -1,7 +1,7 @@
-import { ts } from "@skandha/types/lib";
-import { AllChainsMetrics } from "@skandha/monitoring/lib";
-import { Executor } from "@skandha/executor/lib/executor";
-import { Config } from "@skandha/executor/lib/config";
+import { ts } from "@safehodl/types/lib";
+import { AllChainsMetrics } from "@safehodl/monitoring/lib";
+import { Executor } from "@safehodl/executor/lib/executor";
+import { Config } from "@safehodl/executor/lib/config";
 import { INetwork } from "../network/interface";
 
 export interface ISyncService {

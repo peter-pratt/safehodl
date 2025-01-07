@@ -1,5 +1,5 @@
 {
-  "name": "@skandha/contracts",
+  "name": "@safehodl/contracts",
   "private": false,
   "publishConfig": {
     "access": "public"

@@ -1,4 +1,4 @@
-import { SkandhaError } from "@skandha/utils/lib";
+import { SkandhaError } from "@safehodl/utils/lib";
 import { Encoding } from "../types";
 import { ResponseError } from "../response";
 import { RespStatus, RpcResponseStatusError } from "../interface";

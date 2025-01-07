@@ -6,7 +6,7 @@ import {
   IsNumber,
   ValidateNested,
 } from "class-validator";
-import { ReputationStatus } from "@skandha/types/lib/executor";
+import { ReputationStatus } from "@safehodl/types/lib/executor";
 
 export class SetReputationEntry {
   @IsEthereumAddress()

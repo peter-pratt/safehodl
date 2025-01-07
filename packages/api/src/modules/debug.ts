@@ -1,9 +1,9 @@
-import { UserOperationStruct } from "@skandha/types/lib/executor/contracts/EntryPoint";
-import { Debug } from "@skandha/executor/lib/modules";
+import { UserOperationStruct } from "@safehodl/types/lib/executor/contracts/EntryPoint";
+import { Debug } from "@safehodl/executor/lib/modules";
 import { IsEthereumAddress } from "class-validator";
-import { BundlingMode } from "@skandha/types/lib/api/interfaces";
-import { GetStakeStatus } from "@skandha/executor/lib/interfaces";
-import { MempoolEntrySerialized } from "@skandha/executor/lib/entities/interfaces";
+import { BundlingMode } from "@safehodl/types/lib/api/interfaces";
+import { GetStakeStatus } from "@safehodl/executor/lib/interfaces";
+import { MempoolEntrySerialized } from "@safehodl/executor/lib/entities/interfaces";
 import { RpcMethodValidator } from "../utils/RpcMethodValidator";
 import {
   SetReputationArgs,

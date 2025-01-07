@@ -1,5 +1,5 @@
 import { providers } from "ethers";
-import { Config } from "@skandha/executor/lib/config";
+import { Config } from "@safehodl/executor/lib/config";
 
 export class RedirectAPI {
   private provider: providers.JsonRpcProvider;

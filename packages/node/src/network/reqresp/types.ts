@@ -1,4 +1,4 @@
-import { ts } from "@skandha/types/lib";
+import { ts } from "@safehodl/types/lib";
 
 export enum ReqRespMethod {
   Status = "status",

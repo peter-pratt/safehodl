@@ -1,4 +1,4 @@
-import { ts, ssz } from "@skandha/types/lib";
+import { ts, ssz } from "@safehodl/types/lib";
 
 export enum ENRKey {
   tcp = "tcp",

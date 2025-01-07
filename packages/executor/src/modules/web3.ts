@@ -1,4 +1,4 @@
-import { SafehodlVersion } from "@skandha/types/lib/executor";
+import { SafehodlVersion } from "@safehodl/types/lib/executor";
 import { Config } from "../config";
 
 export class Web3 {

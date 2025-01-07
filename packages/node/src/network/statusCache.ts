@@ -1,6 +1,6 @@
-import { ts } from "@skandha/types/lib";
+import { ts } from "@safehodl/types/lib";
 import { ReqRespHandlers } from "./reqresp/handlers";
-import { now } from "@skandha/executor/lib/utils";
+import { now } from "@safehodl/executor/lib/utils";
 
 export interface StatusCache {
   get(): Promise<ts.Status>;

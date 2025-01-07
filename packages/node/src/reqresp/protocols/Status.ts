@@ -1,5 +1,5 @@
-import { ssz, ts } from "@skandha/types/lib";
-import { MAX_MEMPOOLS_PER_BUNDLER } from "@skandha/types/lib/sszTypes";
+import { ssz, ts } from "@safehodl/types/lib";
+import { MAX_MEMPOOLS_PER_BUNDLER } from "@safehodl/types/lib/sszTypes";
 import {
   ContextBytesType,
   DialOnlyProtocolDefinition,

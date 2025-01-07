@@ -1,7 +1,7 @@
 import http from "node:http";
 import { AddressInfo } from "node:net";
 import { Registry, Histogram } from "prom-client";
-import { Logger } from "@skandha/types/lib";
+import { Logger } from "@safehodl/types/lib";
 import { wrapError } from "../utils";
 
 export type HttpMetricsServerOpts = {

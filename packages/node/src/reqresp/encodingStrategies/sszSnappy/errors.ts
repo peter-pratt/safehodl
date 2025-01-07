@@ -1,4 +1,4 @@
-import { SkandhaError } from "@skandha/utils/lib";
+import { SkandhaError } from "@safehodl/utils/lib";
 
 export enum SszSnappyErrorCode {
   /** Invalid number of bytes for protobuf varint */

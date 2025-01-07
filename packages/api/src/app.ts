@@ -1,9 +1,9 @@
 import { WebSocket } from "ws";
-import { Executor } from "@skandha/executor/lib/executor";
-import { Config } from "@skandha/executor/lib/config";
-import RpcError from "@skandha/types/lib/api/errors/rpc-error";
-import * as RpcErrorCodes from "@skandha/types/lib/api/errors/rpc-error-codes";
-import { deepHexlify } from "@skandha/utils/lib/hexlify";
+import { Executor } from "@safehodl/executor/lib/executor";
+import { Config } from "@safehodl/executor/lib/config";
+import RpcError from "@safehodl/types/lib/api/errors/rpc-error";
+import * as RpcErrorCodes from "@safehodl/types/lib/api/errors/rpc-error-codes";
+import { deepHexlify } from "@safehodl/utils/lib/hexlify";
 import {
   BundlerRPCMethods,
   CustomRPCMethods,

@@ -1,8 +1,8 @@
 import { Mutex } from "async-mutex";
 import { constants, providers, utils } from "ethers";
-import { Logger } from "@skandha/types/lib";
-import { PerChainMetrics } from "@skandha/monitoring/lib";
-import { MempoolEntryStatus } from "@skandha/types/lib/executor";
+import { Logger } from "@safehodl/types/lib";
+import { PerChainMetrics } from "@safehodl/monitoring/lib";
+import { MempoolEntryStatus } from "@safehodl/types/lib/executor";
 import { Config } from "../../../config";
 import { Bundle, NetworkConfig } from "../../../interfaces";
 import { IRelayingMode, Relayer } from "../interfaces";

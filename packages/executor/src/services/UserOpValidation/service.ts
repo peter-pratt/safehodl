@@ -1,8 +1,8 @@
 import { BigNumber, providers } from "ethers";
-import { Logger } from "@skandha/types/lib";
-import { UserOperationStruct } from "@skandha/types/lib/executor/contracts/EntryPoint";
-import RpcError from "@skandha/types/lib/api/errors/rpc-error";
-import * as RpcErrorCodes from "@skandha/types/lib/api/errors/rpc-error-codes";
+import { Logger } from "@safehodl/types/lib";
+import { UserOperationStruct } from "@safehodl/types/lib/executor/contracts/EntryPoint";
+import RpcError from "@safehodl/types/lib/api/errors/rpc-error";
+import * as RpcErrorCodes from "@safehodl/types/lib/api/errors/rpc-error-codes";
 import { Config } from "../../config";
 import {
   ExecutionResult,

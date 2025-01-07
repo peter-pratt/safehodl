@@ -1,9 +1,9 @@
 import { GossipSub, GossipsubEvents } from "@chainsafe/libp2p-gossipsub";
-import logger, { Logger } from "@skandha/api/lib/logger";
-import { ts } from "@skandha/types/lib";
-import { deserializeMempoolId, networksConfig } from "@skandha/params/lib";
-import { GOSSIP_MAX_SIZE } from "@skandha/types/lib/sszTypes";
-import { AllChainsMetrics } from "@skandha/monitoring/lib";
+import logger, { Logger } from "@safehodl/api/lib/logger";
+import { ts } from "@safehodl/types/lib";
+import { deserializeMempoolId, networksConfig } from "@safehodl/params/lib";
+import { GOSSIP_MAX_SIZE } from "@safehodl/types/lib/sszTypes";
+import { AllChainsMetrics } from "@safehodl/monitoring/lib";
 import { SignaturePolicy } from "@chainsafe/libp2p-gossipsub/types";
 import { Libp2p } from "../interface";
 import { NetworkEvent, NetworkEventBus } from "../events";

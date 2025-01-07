@@ -8,8 +8,8 @@
   "scripts": {
     "clean": "rm -rf ./packages/*/lib ./packages/*/*.tsbuildinfo",
     "bootstrap": "yarn install",
-    "prebuild": "yarn workspace @skandha/types run build",
-    "build-db": "yarn workspace @skandha/db run build",
+    "prebuild": "yarn workspace @safehodl/types run build",
+    "build-db": "yarn workspace @safehodl/db run build",
     "build": "yarn prebuild && yarn build-db & lerna run build",
     "lint": "eslint --color --ext .ts packages/*/src/",
     "fix-lint": "eslint --ext .ts --fix packages/*/src/",

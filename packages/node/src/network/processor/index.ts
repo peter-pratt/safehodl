@@ -1,6 +1,6 @@
-import { mapValues } from "@skandha/utils/lib";
-import logger from "@skandha/api/lib/logger";
-import { Config } from "@skandha/executor/lib/config";
+import { mapValues } from "@safehodl/utils/lib";
+import logger from "@safehodl/api/lib/logger";
+import { Config } from "@safehodl/executor/lib/config";
 import { NetworkEvent, NetworkEventBus } from "../events";
 import { GossipType } from "../gossip/interface";
 import { createGossipQueues } from "./gossipQueues";

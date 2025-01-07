@@ -1,8 +1,8 @@
-import { ssz, ts } from "@skandha/types/lib";
-import { Bytes32, UintBn256 } from "@skandha/types/lib/primitive/sszTypes";
-import { fromHex, toHex } from "@skandha/utils/lib";
+import { ssz, ts } from "@safehodl/types/lib";
+import { Bytes32, UintBn256 } from "@safehodl/types/lib/primitive/sszTypes";
+import { fromHex, toHex } from "@safehodl/utils/lib";
 import { BigNumber, BigNumberish } from "ethers";
-import { UserOperationStruct } from "@skandha/types/lib/executor/contracts/EntryPoint";
+import { UserOperationStruct } from "@safehodl/types/lib/executor/contracts/EntryPoint";
 import { getAddress } from "ethers/lib/utils";
 
 const bigintToBigNumber = (bn: bigint): BigNumberish => {
