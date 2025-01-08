@@ -7,7 +7,7 @@
   "version": "1.5.27",
   "description": "Various bundler parameters",
   "author": "Etherspot",
-  "homepage": "https://github.com/etherspot/skandha#readme",
+  "homepage": "https://github.com/Beldex-Coin/beldex/blob/master/README.md",
   "license": "MIT",
   "type": "module",
   "files": [
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/etherspot/skandha.git"
+    "url": "https://github.com/Beldex-Coin/beldex/blob/master/README.md"
   },
   "bugs": {
     "url": "https://github.com/etherspot/skandha/issues"

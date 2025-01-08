@@ -1,4 +1,4 @@
-import { SkandhaError } from "@safehodl/utils/lib";
+import { SafehodlError } from "@safehodl/utils/lib";
 
 export enum SszSnappyErrorCode {
   /** Invalid number of bytes for protobuf varint */
@@ -40,7 +40,7 @@ type SszSnappyErrorType =
   | { code: SszSnappyErrorCode.TOO_MANY_BYTES; sszDataLength: number }
   | { code: SszSnappyErrorCode.SOURCE_ABORTED };
 
-export class SszSnappyError extends SkandhaError<SszSnappyErrorType> {
+export class SszSnappyError extends SafehodlError<SszSnappyErrorType> {
   constructor(type: SszSnappyErrorType) {
     super(type);
   }

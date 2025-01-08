@@ -1,4 +1,4 @@
-name: Build skandha v1 docker image 
+name: Build safehodl v1 docker image 
 
 on:
   push:

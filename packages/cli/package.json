@@ -10,7 +10,7 @@
   "version": "1.5.27",
   "description": "> TODO: description",
   "author": "zincoshine <psramanuj@gmail.com>",
-  "homepage": "https://https://github.com/etherspot/skandha#readme",
+  "homepage": "https://github.com/Beldex-Coin/beldex/blob/master/README.md",
   "license": "ISC",
   "type": "module",
   "directories": {
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://https://github.com/etherspot/skandha.git"
+    "url": "https://github.com/Beldex-Coin/beldex/blob/master/README.md"
   },
   "scripts": {
     "clean": "rm -rf lib && rm -f *.tsbuildinfo",

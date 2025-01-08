@@ -24,7 +24,7 @@ body:
       label: Steps to reproduce
       description: List the steps to reproduce the behavior
       placeholder: |
-        1. Run command './skandha'
+        1. Run command './safehodl'
         2. Check debug and log errors
     validations:
       required: false
@@ -51,8 +51,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: Skandha version or commit hash
-      description: Which version or commit hash of Skandha are you running? 
+      label: Safehodl version or commit hash
+      description: Which version or commit hash of Safehodl are you running? 
       placeholder: v0.0.1 or 214ee64
     validations:
       required: true

@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 
 <div align="center">
-  <img src="https://public.etherspot.io/assets/etherspot.gif" width="200" height="200">
+  <img src="https://img.freepik.com/premium-photo/beldex-bdx-coin-cryptocurrency-concept-banner-background_32996-2566.jpg?w=1380" width="200" height="200">
   <p>
     <b>
       A modular, developer-friendly Typescript Bundler for Ethereum EIP-4337 Account Abstraction
@@ -22,13 +22,13 @@
 </div>
 
 > [!IMPORTANT]
-> **Skandha v1** - supports EntryPoint 0.6.0 and can be found on [master](https://github.com/etherspot/skandha/tree/master)
+> **Safehodl v1** - supports EntryPoint 0.6.0 and can be found on [master](https://github.com/etherspot/skandha/tree/master)
 > 
-> **Skandha v2** - supports EntryPoint 0.7.0 and can be found on [develop](https://github.com/etherspot/skandha/tree/develop)
+> **Safehodl v2** - supports EntryPoint 0.7.0 and can be found on [develop](https://github.com/etherspot/skandha/tree/develop)
 
 ## Important links
 
-**[Install Skandha](https://etherspot.fyi/skandha/installation)**
+**[Install Safehodl](https://etherspot.fyi/skandha/installation)**
 | [Chains supported](https://etherspot.fyi/prime-sdk/chains-supported))
 | [UserOp Fee history](https://etherspot.fyi/skandha/feehistory)
 
@@ -96,9 +96,9 @@ For a video tutorial on the above, you can [view this here.](https://www.youtube
   "relayers": [
     "0x0101010101010101010101010101010101010101010101010101010101010101",
     "test test test test test test test test test test test junk"
-  ], # relayers private keys, can access from here or via environment variables (SKANDHA_MUMBAI_RELAYERS | SKANDHA_DEV_RELAYERS | etc.)
-  "beneficiary": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", # optional, fee collector, available via env var (SKANDHA_MUMBAI_BENEFICIARY | etc) - if not set, relayer will be used
-  "rpcEndpoint": "http://localhost:8545", # rpc provider, also available via env variable (SKANDHA_MUMBAI_RPC | etc)
+  ], # relayers private keys, can access from here or via environment variables (SAFEHODL_MUMBAI_RELAYERS | SAFEHODL_DEV_RELAYERS | etc.)
+  "beneficiary": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", # optional, fee collector, available via env var (SAFEHODL_MUMBAI_BENEFICIARY | etc) - if not set, relayer will be used
+  "rpcEndpoint": "http://localhost:8545", # rpc provider, also available via env variable (SAFEHODL_MUMBAI_RPC | etc)
   "minInclusionDenominator": 10, # optional, see EIP-4337
   "throttlingSlack": 10, # optional, see EIP-4337
   "banSlack": 50 # optional, see EIP-4337
@@ -111,7 +111,7 @@ For a video tutorial on the above, you can [view this here.](https://www.youtube
   "etherscanApiKey": "", # optional,etherscan api is used to fetch gas prices
   "conditionalTransactions": false, # optional,enable conditional transactions
   "rpcEndpointSubmit": "", # optional,rpc endpoint that is used only during submission of a bundle
-  "gasPriceMarkup": 0, # optional,adds % markup on reported gas price via skandha_getGasPrice, 10000 = 100.00%, 500 = 5%
+  "gasPriceMarkup": 0, # optional,adds % markup on reported gas price via safehodl_getGasPrice, 10000 = 100.00%, 500 = 5%
   "enforceGasPrice": false, # optional,do not bundle userops with low gas prices
   "enforceGasPriceThreshold": 1000, # optional,gas price threshold in bps. If set to 500, userops' gas price is allowed to be 5% lower than the network's gas price
   "eip2930": false, # optional, enables eip-2930
@@ -156,7 +156,7 @@ Licensed under the [MIT License](https://github.com/etherspot/skandha/blob/maste
 - Goerli | QmTmj4cizhWpEFCCqk5dP67yws7R2PPgCtb2bd2RgVPCbF | https://ipfs.io/ipfs/QmTmj4cizhWpEFCCqk5dP67yws7R2PPgCtb2bd2RgVPCbF?filename=goerli_canonical_mempool.yaml
 
 ## 🔢 Statistics
-![Alt](https://repobeats.axiom.co/api/embed/4d7ec3ece88b2461c5b1757574321f4f6540cdd5.svg "Skandha analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/4d7ec3ece88b2461c5b1757574321f4f6540cdd5.svg "Safehodl analytics image")
 
 ## 🙏 Acknowledgements
 

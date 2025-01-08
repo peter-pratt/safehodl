@@ -1,4 +1,4 @@
-# Smart contract for Skandha bundler
+# Smart contract for Safehodl bundler
 
 ### Deployments
 

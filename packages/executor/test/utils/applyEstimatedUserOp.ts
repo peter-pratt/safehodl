@@ -1,5 +1,5 @@
-import { EstimatedUserOperationGas } from "@skandha/types/src/api/interfaces";
-import { UserOperationStruct } from "@skandha/types/src/executor/contracts/EntryPoint";
+import { EstimatedUserOperationGas } from "@safehodl/types/src/api/interfaces";
+import { UserOperationStruct } from "@safehodl/types/src/executor/contracts/EntryPoint";
 
 export function applyEstimatedUserOp(userOp: UserOperationStruct, estimated: EstimatedUserOperationGas) {
   userOp.maxFeePerGas = estimated.maxFeePerGas;

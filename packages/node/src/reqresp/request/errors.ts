@@ -1,4 +1,4 @@
-import { SkandhaError } from "@safehodl/utils/lib";
+import { SafehodlError } from "@safehodl/utils/lib";
 import { Encoding } from "../types";
 import { ResponseError } from "../response";
 import { RespStatus, RpcResponseStatusError } from "../interface";
@@ -63,13 +63,13 @@ export type RequestErrorMetadata = {
  * Same error types as RequestError but without metadata.
  * Top level function sendRequest() must rethrow RequestInternalError with metadata
  */
-export class RequestInternalError extends SkandhaError<RequestErrorType> {
+export class RequestInternalError extends SafehodlError<RequestErrorType> {
   constructor(type: RequestErrorType) {
     super(type);
   }
 }
 
-export class RequestError extends SkandhaError<
+export class RequestError extends SafehodlError<
   RequestErrorType & RequestErrorMetadata
 > {
   constructor(type: RequestErrorType, metadata: RequestErrorMetadata) {

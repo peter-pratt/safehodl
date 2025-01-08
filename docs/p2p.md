@@ -52,19 +52,19 @@ Example:
 ### Run the bootnode
 
 ```
-./skandha node --redirectRpc --executor.bundlingMode manual
+./safehodl node --redirectRpc --executor.bundlingMode manual
 ```
 
 ### Run a regular node
 
 ```
-./skandha node --redirectRpc --executor.bundlingMode manual --dataDir ./db --api.port 14338 --api.wsPort 14338 --p2p.port 4338 --p2p.enrPort 4338 --p2p.bootEnrs [enr]
+./safehodl node --redirectRpc --executor.bundlingMode manual --dataDir ./db --api.port 14338 --api.wsPort 14338 --p2p.port 4338 --p2p.enrPort 4338 --p2p.bootEnrs [enr]
 ```
 
 ### Run the second regular node 
 
 ```
-./skandha node --redirectRpc --executor.bundlingMode manual --dataDir ./db2 --api.port 14339 --api.wsPort 14339 --p2p.port 4339 --p2p.enrPort 4339 --p2p.bootEnrs [enr]
+./safehodl node --redirectRpc --executor.bundlingMode manual --dataDir ./db2 --api.port 14339 --api.wsPort 14339 --p2p.port 4339 --p2p.enrPort 4339 --p2p.bootEnrs [enr]
 ```
 
 ## Use Fastlane relayer
@@ -97,12 +97,12 @@ Use this config values to switch to fastlane relayer which protects bundles from
 `canonicalEntryPoint` - entry point that corresponds to canonical mempool id\
 `rpcEndpointSubmit` - rpc endpoint provided by fastlane that supports `pfl_sendRawTransactionConditional` rpc method\
 `fastlaneValidators` - addresses of validators that support `pfl_sendRawTransactionConditional` rpc method\
-`bundleInterval` - this should be about the same value as block time on Polygon. On each interval Skandha will check if the current proposer matches `fastlaneValidators`, and if so submits the bundle
+`bundleInterval` - this should be about the same value as block time on Polygon. On each interval Safehodl will check if the current proposer matches `fastlaneValidators`, and if so submits the bundle
 
 
 ### Notes of Fastlane
 
-Right now a very limited number of validators are participating in this, so in order to submit bundles Skandha has to wait for the right validator's turn, which usually takes hours and may take even longer.
+Right now a very limited number of validators are participating in this, so in order to submit bundles Safehodl has to wait for the right validator's turn, which usually takes hours and may take even longer.
 
 ### The list of fastlane validators
 

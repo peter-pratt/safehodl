@@ -1,8 +1,8 @@
 import { describe, it } from "vitest";
 import { utils } from "ethers";
-import { ReputationStatus } from "@skandha/types/src/executor";
+import { ReputationStatus } from "@safehodl/types/src/executor";
 import { assert } from "chai";
-import * as RpcErrorCodes from "@skandha/types/lib/api/errors/rpc-error-codes";
+import * as RpcErrorCodes from "@safehodl/types/lib/api/errors/rpc-error-codes";
 import { randomAddress } from "../../utils";
 import { getClient, getConfigs, getServices } from "../../fixtures";
 

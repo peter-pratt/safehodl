@@ -13,7 +13,7 @@ import {
 import { LocalDbController } from "../mocks/database";
 import { ChainId } from "../constants";
 import { logger } from "../mocks/logger";
-import { Skandha } from "../../src/modules";
+import { Safehodl } from "../../src/modules";
 
 export async function getServices(
   config: Config,
@@ -43,7 +43,7 @@ export async function getServices(
     logger
   );
 
-  const skandha = new Skandha(
+  const safehodl = new Safehodl(
     undefined,
     mempoolService,
     ChainId,
@@ -53,7 +53,7 @@ export async function getServices(
   );
 
   const userOpValidationService = new UserOpValidationService(
-    skandha,
+    safehodl,
     provider,
     reputationService,
     ChainId,
@@ -94,7 +94,7 @@ export async function getServices(
     mempoolService,
     bundlingService,
     eventsService,
-    skandha,
+    safehodl,
     subscriptionService,
     eventBus,
   };

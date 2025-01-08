@@ -1,4 +1,4 @@
-name: Skandha ERC-4337 compliance (bundler-spec-tests)
+name: Safehodl ERC-4337 compliance (bundler-spec-tests)
 
 on:
   push:
@@ -81,12 +81,12 @@ jobs:
           --exec "eth.sendTransaction({from: eth.accounts[0], to: \"0x55082761664aEb8062B3427ba5E0455bFb7b68CB\", value: web3.toWei(4337, \"ether\")})" \
           attach http://localhost:8545/
 
-      - name: Install Skandha deps and build
+      - name: Install Safehodl deps and build
         run: yarn install && yarn build && yarn run bootstrap
 
-      - name: Start Skandha
+      - name: Start Safehodl
         # This private key is for testing only
-        run: cp config.json.default config.json && jq '.networks.dev.relayer = "0x767b4393f6a5da742b30585428116f0395bee8e61c2da4ae8e67e5633389e2d3"' && ./skandha standalone --testingMode &
+        run: cp config.json.default config.json && jq '.networks.dev.relayer = "0x767b4393f6a5da742b30585428116f0395bee8e61c2da4ae8e67e5633389e2d3"' && ./safehodl standalone --testingMode &
 
       - name: Run tests
         working-directory: ./bundler-spec-tests
