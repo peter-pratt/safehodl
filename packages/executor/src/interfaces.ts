@@ -174,6 +174,12 @@ export interface NetworkConfig {
   // default: 24 hours
   archiveDuration: number;
   fastlaneValidators: string[];
+  // enables polling mechanism
+  pollingEnabled?: boolean;
+  // interval for general polling operations in milliseconds
+  pollingInterval?: number;
+  // interval for block polling operations in milliseconds
+  blockPollingInterval?: number;
   blockscoutUrl: string;
   blockscoutApiKeys: string[];
 }
@@ -184,10 +190,11 @@ export type BundlerConfig = Omit<
 >;
 
 export interface ConfigOptions {
-  config: NetworkConfig | null;
   testingMode?: boolean;
-  unsafeMode: boolean;
-  redirectRpc: boolean;
+  unsafeMode?: boolean;
+  redirectRpc?: boolean;
+  network?: string;
+  config?: NetworkConfig | null;
 }
 
 export interface SlotMap {

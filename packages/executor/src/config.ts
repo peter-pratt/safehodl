@@ -1,4 +1,3 @@
-// TODO: create a new package "config" instead of this file and refactor
 import { BigNumber, Wallet, providers, utils } from "ethers";
 import { IEntity, RelayingMode } from "@skandha/types/lib/executor";
 import { getAddress } from "ethers/lib/utils";
@@ -10,12 +9,26 @@ export class Config {
   redirectRpc: boolean;
   config: NetworkConfig;
   chainId: number;
+  network: string;
+  
+  private getRpcEndpoint(): string {
+    switch(this.network?.toLowerCase()) {
+        case 'amoy':
+            return "https://polygon-amoy.g.alchemy.com/v2/ZLEJFnln-NNTXVQWZx11yrfqtQcKKoip";
+        case 'sepolia':
+            return "https://eth-sepolia.g.alchemy.com/v2/ZLEJFnln-NNTXVQWZx11yrfqtQcKKoip";
+        default:
+            return "http://localhost:8545";
+    }
+  }
 
   constructor(options: ConfigOptions) {
     this.testingMode = options.testingMode ?? false;
     this.unsafeMode = options.unsafeMode ?? false;
     this.redirectRpc = options.redirectRpc ?? false;
-    this.config = this.getDefaultNetworkConfig(options.config);
+    this.network = options.network ?? 'sepolia'; // Default to sepolia if not specified
+    // Change this line to handle undefined case
+    this.config = this.getDefaultNetworkConfig(options.config ?? null);
     this.chainId = 0;
   }
 
@@ -32,7 +45,24 @@ export class Config {
   }
 
   getNetworkProvider(): providers.JsonRpcProvider {
-    return new providers.JsonRpcProvider(this.config.rpcEndpoint);
+    const rpcUrl = this.getRpcEndpoint();
+    // return new providers.JsonRpcProvider(rpcUrl);
+    
+    const provider = new providers.JsonRpcProvider({
+      url: rpcUrl,
+      timeout: 30000
+    });
+    
+    // Disable the provider's internal event polling
+    provider.removeAllListeners();
+    
+    // Disable automatic polling - this requires a type assertion since it's not in the type definition
+    (provider as any).polling = false;
+    
+    // Set an extremely long polling interval (30 minutes)
+    provider.pollingInterval = 30 * 60 * 1000;
+    
+    return provider;
   }
 
   getRelayers(): Wallet[] | providers.JsonRpcSigner[] | null {
@@ -91,20 +121,21 @@ export class Config {
       config.entryPoints,
       true
     ) as string[];
-
+  
     config.relayers = fromEnvVar("RELAYERS", config.relayers, true) as string[];
-
+  
     config.beneficiary = fromEnvVar(
       "BENEFICIARY",
       config.beneficiary || bundlerDefaultConfigs.beneficiary
     ) as string;
-
-    config.rpcEndpoint = fromEnvVar("RPC", config.rpcEndpoint) as string;
-
+  
+    // Set the network-specific RPC endpoint as a string
+    config.rpcEndpoint = this.getRpcEndpoint();
+  
     if (this.testingMode && !config.rpcEndpoint) {
       config.rpcEndpoint = "http://localhost:8545"; // local geth
     }
-
+  
     config.etherscanApiKey = fromEnvVar(
       "ETHERSCAN_API_KEY",
       config.etherscanApiKey || bundlerDefaultConfigs.etherscanApiKey
@@ -154,11 +185,11 @@ export class Config {
         config.useropsTTL || bundlerDefaultConfigs.useropsTTL
       )
     );
-
+  
     config.minStake = BigNumber.from(
       fromEnvVar("MIN_STAKE", config.minStake ?? bundlerDefaultConfigs.minStake)
     );
-
+  
     config.minUnstakeDelay = Number(
       fromEnvVar(
         "MIN_UNSTAKE_DELAY",
@@ -176,74 +207,74 @@ export class Config {
       "RELAYING_MODE",
       config.relayingMode || bundlerDefaultConfigs.relayingMode
     ) as RelayingMode;
-
+  
     config.bundleInterval = Number(
       fromEnvVar(
         "BUNDLE_INTERVAL",
         config.bundleInterval || bundlerDefaultConfigs.bundleInterval
       )
     );
-
+  
     config.bundleSize = Number(
       fromEnvVar(
         "BUNDLE_SIZE",
         config.bundleSize || bundlerDefaultConfigs.bundleSize
       )
     );
-
+  
     config.pvgMarkup = Number(
       fromEnvVar(
         "PVG_MARKUP",
         config.pvgMarkup || bundlerDefaultConfigs.pvgMarkup
       )
     );
-
+  
     config.canonicalMempoolId = String(
       fromEnvVar(
         "CANONICAL_MEMPOOL",
         config.canonicalMempoolId || bundlerDefaultConfigs.canonicalMempoolId
       )
     );
-
+  
     config.canonicalEntryPoint = String(
       fromEnvVar(
         "CANONICAL_ENTRY_POINT",
         config.canonicalEntryPoint || bundlerDefaultConfigs.canonicalEntryPoint
       )
     );
-
+  
     config.cglMarkup = Number(
       fromEnvVar(
         "CGL_MARKUP",
         config.cglMarkup || bundlerDefaultConfigs.cglMarkup
       )
     );
-
+  
     config.vglMarkup = Number(
       fromEnvVar(
         "VGL_MARKUP",
         config.vglMarkup || bundlerDefaultConfigs.vglMarkup
       )
     );
-
+  
     config.gasFeeInSimulation = Boolean(
       fromEnvVar(
         "GAS_FEE_IN_SIMULATION",
         config.gasFeeInSimulation || bundlerDefaultConfigs.gasFeeInSimulation
       )
     );
-
+  
     config.throttlingSlack = Number(
       fromEnvVar(
         "THROTTLING_SLACK",
         config.throttlingSlack || bundlerDefaultConfigs.throttlingSlack
       )
     );
-
+  
     config.banSlack = Number(
       fromEnvVar("BAN_SLACK", config.banSlack || bundlerDefaultConfigs.banSlack)
     );
-
+  
     config.minInclusionDenominator = Number(
       fromEnvVar(
         "MIN_INCLUSION_DENOMINATOR",
@@ -251,14 +282,14 @@ export class Config {
           bundlerDefaultConfigs.minInclusionDenominator
       )
     );
-
+  
     config.merkleApiURL = String(
       fromEnvVar(
         "MERKLE_API_URL",
         config.merkleApiURL || bundlerDefaultConfigs.merkleApiURL
       )
     );
-
+  
     config.skipBundleValidation = Boolean(
       fromEnvVar(
         "SKIP_BUNDLE_VALIDATION",
@@ -266,35 +297,35 @@ export class Config {
           bundlerDefaultConfigs.skipBundleValidation
       )
     );
-
+  
     config.bundleGasLimit = Number(
       fromEnvVar(
         "BUNDLE_GAS_LIMIT",
         config.bundleGasLimit || bundlerDefaultConfigs.bundleGasLimit
       )
     );
-
+  
     config.userOpGasLimit = Number(
       fromEnvVar(
         "USEROP_GAS_LIMIT",
         config.userOpGasLimit || bundlerDefaultConfigs.userOpGasLimit
       )
     );
-
+  
     config.kolibriAuthKey = String(
       fromEnvVar(
         "KOLIBRI_AUTH_KEY",
         config.kolibriAuthKey || bundlerDefaultConfigs.kolibriAuthKey
       )
     );
-
+  
     config.entryPointForwarder = String(
       fromEnvVar(
         "ENTRYPOINT_FORWARDER",
         config.entryPointForwarder || bundlerDefaultConfigs.entryPointForwarder
       )
     );
-
+  
     config.fastlaneValidators = fromEnvVar(
       "FASTLANE_VALIDATOR",
       config.fastlaneValidators != undefined
@@ -302,14 +333,14 @@ export class Config {
         : bundlerDefaultConfigs.fastlaneValidators,
       true
     ) as string[];
-
+  
     config.estimationGasLimit = Number(
       fromEnvVar(
         "ESTIMATION_GAS_LIMIT",
         config.estimationGasLimit || bundlerDefaultConfigs.estimationGasLimit
       )
     );
-
+  
     config.pvgMarkupPercent = Number(
       fromEnvVar(
         "PVG_MARKUP_PERCENT",
@@ -328,14 +359,14 @@ export class Config {
         config.vglMarkupPercent || bundlerDefaultConfigs.vglMarkupPercent
       )
     );
-
+  
     config.blockscoutUrl = String(
       fromEnvVar(
         "BLOCKSCOUT_URL",
         config.blockscoutUrl || bundlerDefaultConfigs.blockscoutUrl
       )
     );
-
+  
     config.blockscoutApiKeys = fromEnvVar(
       "BLOCKSCOUT_API_KEYS",
       config.blockscoutApiKeys != undefined
@@ -343,12 +374,32 @@ export class Config {
         : bundlerDefaultConfigs.blockscoutApiKeys,
       true
     ) as string[];
-
+  
+    // Add the new polling-related configurations here
+    config.pollingEnabled = Boolean(
+      fromEnvVar(
+        "POLLING_ENABLED",
+        config.pollingEnabled || bundlerDefaultConfigs.pollingEnabled
+      )
+    );
+    config.pollingInterval = Number(
+      fromEnvVar(
+        "POLLING_INTERVAL",
+        config.pollingInterval || bundlerDefaultConfigs.pollingInterval
+      )
+    );
+    config.blockPollingInterval = Number(
+      fromEnvVar(
+        "BLOCK_POLLING_INTERVAL",
+        config.blockPollingInterval || bundlerDefaultConfigs.blockPollingInterval
+      )
+    );
+  
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (!config.whitelistedEntities) {
       config.whitelistedEntities = bundlerDefaultConfigs.whitelistedEntities;
     }
-
+  
     /**
      * validate whitelist addresses
      */
@@ -369,7 +420,7 @@ export class Config {
         }
       }
     }
-
+  
     return Object.assign({}, bundlerDefaultConfigs, config);
   }
 }
@@ -405,7 +456,7 @@ const bundlerDefaultConfigs: BundlerConfig = {
   vglMarkup: 0,
   pvgMarkupPercent: 0,
   cglMarkupPercent: 3000, // 30%
-  vglMarkupPercent: 4000, // 30%
+  vglMarkupPercent: 4000, // 40%
   gasFeeInSimulation: false,
   merkleApiURL: "https://pool.merkle.io",
   skipBundleValidation: false,
@@ -418,6 +469,9 @@ const bundlerDefaultConfigs: BundlerConfig = {
   fastlaneValidators: [],
   blockscoutUrl: "",
   blockscoutApiKeys: [],
+  pollingEnabled: false,
+  pollingInterval: 1800000, // 30 minutes
+  blockPollingInterval: 1800000, // 30 minutes
 };
 
 function getEnvVar<T>(envVar: string, fallback: T): T | string {
