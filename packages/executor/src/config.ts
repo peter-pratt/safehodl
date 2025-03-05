@@ -9,26 +9,12 @@ export class Config {
   redirectRpc: boolean;
   config: NetworkConfig;
   chainId: number;
-  network: string;
   
-  private getRpcEndpoint(): string {
-    switch(this.network?.toLowerCase()) {
-        case 'amoy':
-            return "https://polygon-amoy.g.alchemy.com/v2/ZLEJFnln-NNTXVQWZx11yrfqtQcKKoip";
-        case 'sepolia':
-            return "https://eth-sepolia.g.alchemy.com/v2/ZLEJFnln-NNTXVQWZx11yrfqtQcKKoip";
-        default:
-            return "http://localhost:8545";
-    }
-  }
-
   constructor(options: ConfigOptions) {
     this.testingMode = options.testingMode ?? false;
     this.unsafeMode = options.unsafeMode ?? false;
     this.redirectRpc = options.redirectRpc ?? false;
-    this.network = options.network ?? 'sepolia'; // Default to sepolia if not specified
-    // Change this line to handle undefined case
-    this.config = this.getDefaultNetworkConfig(options.config ?? null);
+    this.config = this.getDefaultNetworkConfig(options.config);
     this.chainId = 0;
   }
 
@@ -45,11 +31,9 @@ export class Config {
   }
 
   getNetworkProvider(): providers.JsonRpcProvider {
-    const rpcUrl = this.getRpcEndpoint();
-    // return new providers.JsonRpcProvider(rpcUrl);
-    
+        
     const provider = new providers.JsonRpcProvider({
-      url: rpcUrl,
+      url: this.config.rpcEndpoint,
       timeout: 30000
     });
     
@@ -60,7 +44,7 @@ export class Config {
     (provider as any).polling = false;
     
     // Set an extremely long polling interval (30 minutes)
-    provider.pollingInterval = 30 * 60 * 1000;
+    provider.pollingInterval = 7 * 60 * 1000;
     
     return provider;
   }
@@ -130,7 +114,7 @@ export class Config {
     ) as string;
   
     // Set the network-specific RPC endpoint as a string
-    config.rpcEndpoint = this.getRpcEndpoint();
+    config.rpcEndpoint = fromEnvVar("RPC", config.rpcEndpoint) as string;
   
     if (this.testingMode && !config.rpcEndpoint) {
       config.rpcEndpoint = "http://localhost:8545"; // local geth
@@ -375,7 +359,9 @@ export class Config {
       true
     ) as string[];
   
+    
     // Add the new polling-related configurations here
+    
     config.pollingEnabled = Boolean(
       fromEnvVar(
         "POLLING_ENABLED",
@@ -470,8 +456,8 @@ const bundlerDefaultConfigs: BundlerConfig = {
   blockscoutUrl: "",
   blockscoutApiKeys: [],
   pollingEnabled: false,
-  pollingInterval: 1800000, // 30 minutes
-  blockPollingInterval: 1800000, // 30 minutes
+  pollingInterval: 900000, // 30 minutes
+  blockPollingInterval: 900000, // 30 minutes
 };
 
 function getEnvVar<T>(envVar: string, fallback: T): T | string {

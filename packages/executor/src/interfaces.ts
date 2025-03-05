@@ -190,11 +190,10 @@ export type BundlerConfig = Omit<
 >;
 
 export interface ConfigOptions {
+  config: NetworkConfig | null;
   testingMode?: boolean;
-  unsafeMode?: boolean;
-  redirectRpc?: boolean;
-  network?: string;
-  config?: NetworkConfig | null;
+  unsafeMode: boolean;
+  redirectRpc: boolean;
 }
 
 export interface SlotMap {
